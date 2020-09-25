@@ -1,9 +1,11 @@
 import data from './data.js'
+
+
 const itemsContainer = document.getElementById('items')
 // the length of our data determines how many times this loop goes around
 for (let i=0; i<data.length; ++i) {
     // create a new div element and give it a class name
-    let newDiv = document.createElement('div');
+    let newDiv = document.createElement('span');
     newDiv.className = 'item'
 
     // create an image element
@@ -12,8 +14,21 @@ for (let i=0; i<data.length; ++i) {
     img.src = data[i].image
     img.width = 300
     img.height = 300
-
-    // Add the image to the div
     newDiv.appendChild(img)
-    console.log(img)
+
+    let desc = document.createElement('P')
+    desc.innerText =data[i].desc
+    newDiv.appendChild(desc)
+    let price = document.createElement('P')
+    price.innerText = data[i].price
+    let button = document.createElement('button')
+    button.id = data[i].name
+    newDiv.appendChild(price)
+
+    button.dataset.price = data[i].price
+    button.innerHTML = "Add to Cart"
+    newDiv.appendChild(button)
+
+    itemsContainer.appendChild(newDiv)
+
 }

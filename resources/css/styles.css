@@ -5,6 +5,12 @@ body{
     margin: 0;
 }
 
+nav {
+    background-color: yellow;
+    font-size: 15px;
+    font-family: monospace;
+}
+
 .page-header {
     display: flex;
     flex-direction: row;
@@ -23,10 +29,4 @@ body{
     display: block;
     padding: 0.5em;
     text-decoration: none;
-}
-
-nav {
-    background-color: yellow;
-    font-size: 15px;
-    font-family: monospace;
 }
