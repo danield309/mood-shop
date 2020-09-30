@@ -1,5 +1,8 @@
 import data from './data.js'
 
+const itemList = document.getElementById('item-list')
+const cartQty = document.getElementById('cart-qty')
+const cartTotal = document.getElementById('cart-total')
 
 const itemsContainer = document.getElementById('items')
 // the length of our data determines how many times this loop goes around
@@ -49,13 +52,22 @@ for (let i=0; i<data.length; ++i) {
     // shows items
     function showItems() {
         const qty = getQty()
-        console.log(`You have ${qty} items in your cart`)
+        // console.log(`You have ${qty} items in your cart`)
+        cartQty.innerHTML = `You have ${qty} items in your cart`
 
+        let itemStr = ''
         for (let i = 0; i < cart.length; i += 1) {
-            console.log(`- ${cart[i].name} $${cart[i].price} x ${cart[i].qty}`)
-        }
+            // console.log(`- ${cart[i].name} $${cart[i].price} x ${cart[i].qty}`)
 
-        console.log(`Total in cart: $${getTotal()}`)
+            // { name: 'Apple', price: 0.99, qty: 3}
+            const { name, price , qty} = cart[i]
+
+            itemStr += `<li>${name} $${price} x ${qty} = ${qty * price}</li>`
+        }
+        itemList.innerHTML = itemStr
+
+        // console.log(`Total in cart: $${getTotal()}`)
+        cartTotal.innerHTML = `Total in cart: $${getTotal()}`
     }
     // ------------------------------------------------------------------------
     // gets quantity
